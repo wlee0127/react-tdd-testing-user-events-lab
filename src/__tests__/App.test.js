@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { getByLabelText, render, screen } from "@testing-library/react";
 import '@testing-library/jest-dom';
 
 import App from "../App";
@@ -66,10 +66,18 @@ test("displays the correct links", () => {
 
 // Newsletter Form - Initial State
 test("the form includes text inputs for name and email address", () => {
+  const {getByLabelText}=render(<App/>);
+  const nameInput = getByLabelText('name');
+  const emailInput = getByLabelText("email");
+  expect(nameInput).toBeInTheDocument();
+  expect(emailInput).toBeInTheDocument();
   // your test code here
 });
 
 test("the form includes three checkboxes to select areas of interest", () => {
+  const {getByLabelText}=render(<App/>);
+  const interest01Input = getByLabelText('Interest 1');
+  expect(interest01Input).toBeInTheDocument();
   // your test code here
 });
 
